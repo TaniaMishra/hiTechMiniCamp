@@ -1,0 +1,34 @@
+{
+    "pictures": [
+      {
+        "id": 1,
+        "name": "Flowers",
+        "imageUrl": "flowers.jpg",
+        "faves": 431
+      },
+      {
+        "id": 2,
+        "name": "Bird",
+        "imageUrl": "bird.jpg",
+        "faves": 50
+      },
+      {
+        "id": 3,
+        "name": "Sea",
+        "imageUrl": "sea.jpg",
+        "faves": 108
+      },
+      {
+        "id": 4,
+        "name": "Tiger",
+        "imageUrl": "tiger.jpg",
+        "faves": 47
+      },
+      {
+        "id": 5,
+        "name": "Tangerines",
+        "imageUrl": "tangerines.jpg",
+        "faves": 88
+      }
+    ]
+}
