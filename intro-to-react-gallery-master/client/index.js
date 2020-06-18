@@ -14,14 +14,39 @@ const Picture = props => {
     const { match } = props;
 
     // Your code here! We need to get our pictures from the API!
+    // The fetch function created outside of useEffect because
+    // it will be reused to fetch a new picture
+    async function fetchPicture() {
+        const pictureId = match.params.pictureId;
+        const { data } = await axios.get("/pictures/" + pictureId);
+        setPicture(data);
+    };
+
+    useEffect(() => {
+        fetchPicture();
+    }, [match.params.pictureId]);
 
     // Remember, this comes from the Route! We want to do math with it,
     // so we coerce it to a number (because it's a string originally)
     const pictureId = Number(match.params.pictureId)
 
-    // Calculates which picture to show next, or the previous one
-    const next = ((pictureId) % 5) + 1
-    const prev = (pictureId <= 1) ? 5 : (pictureId - 1)
+    // Calculates which picture to show next, or the previous one (circular number)
+    //const next = ((pictureId) % 5) + 1     Rewritten as if statements below
+    let next;
+    if (pictureId == 5) {
+        next = 1;
+    }
+    else {
+        next = pictureId + 1;
+    }
+    //const prev = (pictureId <= 1) ? 5 : (pictureId - 1)       Rewritten as full if statements below
+    let prev;
+    if (pictureId == 1) {
+        prev = 5;
+    }
+    else {
+        prev = pictureId - 1;
+    }
 
     const { imageUrl, name, faves } = picture
 
